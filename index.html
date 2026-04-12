@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title>Aylin | Style & Home</title>
+<link rel="preconnect" href="https://graph.instagram.com" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --ink: #1a1a1a;
+    --muted: #8a8078;
+    --taupe: #a89384;
+    --taupe-dark: #8c7565;
+    --line: #ececec;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.45;
+  }
+  .wrap {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 28px 18px 48px;
+  }
+  .profile {
+    text-align: center;
+    padding: 16px 8px 6px;
+  }
+  .logo {
+    display: block;
+    width: 180px;
+    height: auto;
+    margin: 0 auto;
+  }
+  .disclaimer {
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+    margin: 0 0 6px;
+    font-weight: 400;
+    font-style: italic;
+  }
+  .quick-links-heading {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin: 28px 0 16px;
+    color: var(--ink);
+  }
+  .ctas {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 0 0 32px;
+  }
+  .btn {
+    display: block;
+    width: 100%;
+    padding: 16px 18px;
+    border-radius: 999px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: transform 0.15s ease, background 0.2s ease;
+    background: var(--taupe);
+    color: #fff;
+    border: none;
+  }
+  .btn:hover { background: var(--taupe-dark); }
+  .btn:active { transform: scale(0.98); }
+  .section-label {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 8px 0 14px;
+    font-weight: 500;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--line);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .tile {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    background: #f2ebe4;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  .tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+  .tile:active img { transform: scale(1.04); }
+  .tile .link-badge {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  }
+  .tile .link-badge svg { width: 12px; height: 12px; color: var(--taupe-dark); }
+  .skeleton {
+    background: linear-gradient(90deg, #f2ebe4 0%, #faf5f0 50%, #f2ebe4 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.4s infinite;
+  }
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+  .message {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .message a { color: var(--taupe-dark); text-decoration: none; font-weight: 600; }
+  footer {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 11px;
+    color: #b8aba3;
+  }
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="profile">
+      <img class="logo" src="https://stylinbyaylin.com/wp-content/uploads/2021/10/SBA-Logo-Black.svg" alt="Stylin by Aylin" />
+    </section>
+
+    <h2 class="quick-links-heading">Quick Links</h2>
+    <section class="ctas">
+      <a class="btn" href="https://www.shopltk.com/explore/StylinByAylin" target="_blank" rel="noopener">Shop My LTK</a>
+      <a class="btn" href="https://www.amazon.com/shop/stylinbyaylin" target="_blank" rel="noopener">Amazon Finds</a>
+      <a class="btn" href="https://www.nordstrom.com/" target="_blank" rel="noopener">Nordstrom Finds</a>
+      <a class="btn" href="https://www.target.com/" target="_blank" rel="noopener">Target Finds</a>
+    </section>
+
+    <span class="disclaimer">Paid Links</span>
+    <p class="section-label">Latest Posts</p>
+    <div id="grid" class="grid" aria-live="polite"></div>
+
+    <footer>© <span id="yr"></span> StylinByAylin</footer>
+  </main>
+
+<script>
+(function () {
+  // posts.json is built by a GitHub Action every 15 min (see .github/workflows).
+  // No access token ever touches the browser.
+  var CONFIG = {
+    feedUrl: 'https://raw.githubusercontent.com/jdgould44/stylin/main/posts.json',
+    pageSize: 9,
+    fallbackUrl: 'https://www.shopltk.com/explore/stylinbyaylin/collections/11ec913aac740a49b5aa0242ac110004',
+    instagramHandle: 'StylinByAylin'
+  };
+
+  var URL_RE = /(https?:\/\/[^\s]+)/;
+  var grid = document.getElementById('grid');
+  var allPosts = [];
+  var rendered = 0;
+  var sentinel = null;
+  var observer = null;
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  function renderSkeleton(n) {
+    grid.innerHTML = '';
+    for (var i = 0; i < n; i++) {
+      var s = document.createElement('div');
+      s.className = 'tile skeleton';
+      grid.appendChild(s);
+    }
+  }
+
+  function renderError() {
+    grid.className = '';
+    grid.innerHTML =
+      '<div class="message">Content temporarily unavailable — visit ' +
+      '<a href="https://www.instagram.com/' + CONFIG.instagramHandle + '" target="_blank" rel="noopener">@' +
+      CONFIG.instagramHandle + '</a> on Instagram</div>';
+  }
+
+  function extractUrl(caption) {
+    if (!caption) return null;
+    var m = caption.match(URL_RE);
+    return m ? m[1].replace(/[)\].,;:!?]+$/, '') : null;
+  }
+
+  function buildTile(post) {
+    var tile = document.createElement('div');
+    tile.className = 'tile';
+
+    var img = document.createElement('img');
+    var src = post.media_url;
+    if (post.media_type === 'VIDEO' && post.thumbnail_url) src = post.thumbnail_url;
+    img.loading = 'lazy';
+    img.alt = '';
+    img.src = src;
+    img.onerror = function () {
+      if (post.thumbnail_url && img.src !== post.thumbnail_url) img.src = post.thumbnail_url;
+    };
+    tile.appendChild(img);
+
+    var captionUrl = extractUrl(post.caption);
+    var target = captionUrl || CONFIG.fallbackUrl;
+
+    if (captionUrl) {
+      var badge = document.createElement('div');
+      badge.className = 'link-badge';
+      badge.innerHTML =
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">' +
+        '<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>' +
+        '<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>' +
+        '</svg>';
+      tile.appendChild(badge);
+    }
+
+    tile.addEventListener('click', function () {
+      window.open(target, '_blank', 'noopener');
+    });
+
+    return tile;
+  }
+
+  function renderNextPage() {
+    var slice = allPosts.slice(rendered, rendered + CONFIG.pageSize);
+    slice.forEach(function (p) { grid.appendChild(buildTile(p)); });
+    rendered += slice.length;
+    if (rendered >= allPosts.length && observer && sentinel) {
+      observer.unobserve(sentinel);
+      sentinel.remove();
+      sentinel = null;
+    }
+  }
+
+  function setupInfiniteScroll() {
+    sentinel = document.createElement('div');
+    sentinel.style.cssText = 'grid-column: 1 / -1; height: 1px;';
+    grid.appendChild(sentinel);
+    observer = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) renderNextPage();
+    }, { rootMargin: '400px' });
+    observer.observe(sentinel);
+  }
+
+  function load() {
+    renderSkeleton(9);
+    fetch(CONFIG.feedUrl, { cache: 'no-cache' })
+      .then(function (r) {
+        if (!r.ok) throw new Error('http ' + r.status);
+        return r.json();
+      })
+      .then(function (data) {
+        allPosts = (data && data.posts) || [];
+        if (!allPosts.length) { renderError(); return; }
+        grid.innerHTML = '';
+        renderNextPage();
+        if (rendered < allPosts.length) setupInfiniteScroll();
+      })
+      .catch(function () { renderError(); });
+  }
+
+  load();
+})();
+</script>
+</body>
+</html>

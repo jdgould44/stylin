@@ -1,0 +1,9 @@
+{
+  "name": "stylin-link-in-bio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "tweetsodium": "^0.0.5"
+  }
+}
