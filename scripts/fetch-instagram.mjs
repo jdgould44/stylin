@@ -48,7 +48,7 @@ const igUserId = withIg.instagram_business_account.id;
 console.log(`Using Page "${withIg.name}" -> IG user ${igUserId}`);
 
 // 3. Fetch media
-const media = await gget(`/${igUserId}/media`, { fields: FIELDS, limit: '50' });
+const media = await gget(`/${igUserId}/media`, { fields: FIELDS, limit: '90' });
 
 const posts = (media.data || [])
   .filter(p => ['IMAGE', 'VIDEO', 'CAROUSEL_ALBUM'].includes(p.media_type))
