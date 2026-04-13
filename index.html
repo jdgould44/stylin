@@ -281,14 +281,22 @@
         if (!r.ok) throw new Error('http ' + r.status);
         return r.json();
       })
-      .then(function (data) {
-        allPosts = (data && data.posts) || [];
-        if (!allPosts.length) { renderError(); return; }
-        grid.innerHTML = '';
-        renderNextPage();
-        if (rendered < allPosts.length) setupInfiniteScroll();
-      })
-      .catch(function () { renderError(); });
+      .then(handleData)
+      .catch(function () {
+        // Fallback: try local posts.json (for file:// testing or if GitHub is down)
+        fetch('posts.json')
+          .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+          .then(handleData)
+          .catch(function () { renderError(); });
+      });
+  }
+
+  function handleData(data) {
+    allPosts = (data && data.posts) || [];
+    if (!allPosts.length) { renderError(); return; }
+    grid.innerHTML = '';
+    renderNextPage();
+    if (rendered < allPosts.length) setupInfiniteScroll();
   }
 
   load();
@@ -296,3 +304,4 @@
 </script>
 </body>
 </html>
+                                                                                                                                                                                              
