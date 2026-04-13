@@ -85,12 +85,14 @@
   .btn:active { transform: scale(0.98); }
   .section-label {
     text-align: center;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin: 8px 0 14px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 20px;
     font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin: 8px 0 14px;
   }
   .grid {
     display: grid;
@@ -102,7 +104,7 @@
   }
   .tile {
     position: relative;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 4 / 5;
     background: #f2ebe4;
     cursor: pointer;
     overflow: hidden;
@@ -162,14 +164,13 @@
 
     <h2 class="quick-links-heading">Quick Links</h2>
     <section class="ctas">
-      <a class="btn" href="https://www.shopltk.com/explore/StylinByAylin" target="_blank" rel="noopener">Shop My LTK</a>
-      <a class="btn" href="https://www.amazon.com/shop/stylinbyaylin" target="_blank" rel="noopener">Amazon Finds</a>
-      <a class="btn" href="https://www.nordstrom.com/" target="_blank" rel="noopener">Nordstrom Finds</a>
-      <a class="btn" href="https://www.target.com/" target="_blank" rel="noopener">Target Finds</a>
+      <a class="btn" href="https://stylin.link/LTK" target="_blank" rel="noopener">Shop My LTK</a>
+      <a class="btn" href="https://stylin.link/AMAZON" target="_blank" rel="noopener">Amazon Finds</a>
+      <a class="btn" href="https://stylin.link/NORDSTROM" target="_blank" rel="noopener">Nordstrom Finds</a>
+      <a class="btn" href="https://stylin.link/TARGET" target="_blank" rel="noopener">Target Finds</a>
     </section>
 
-    <span class="disclaimer">Paid Links</span>
-    <p class="section-label">Latest Posts</p>
+    <p class="section-label">CLICK ANY POST TO SHOP</p>
     <div id="grid" class="grid" aria-live="polite"></div>
 
     <footer>© <span id="yr"></span> StylinByAylin</footer>
@@ -257,10 +258,16 @@
     var slice = allPosts.slice(rendered, rendered + CONFIG.pageSize);
     slice.forEach(function (p) { grid.appendChild(buildTile(p)); });
     rendered += slice.length;
-    if (rendered >= allPosts.length && observer && sentinel) {
-      observer.unobserve(sentinel);
-      sentinel.remove();
-      sentinel = null;
+    if (rendered >= allPosts.length) {
+      // All posts loaded — remove sentinel
+      if (observer && sentinel) {
+        observer.unobserve(sentinel);
+        sentinel.remove();
+        sentinel = null;
+      }
+    } else if (sentinel) {
+      // Move sentinel to end so it triggers again
+      grid.appendChild(sentinel);
     }
   }
 
@@ -270,7 +277,7 @@
     grid.appendChild(sentinel);
     observer = new IntersectionObserver(function (entries) {
       if (entries[0].isIntersecting) renderNextPage();
-    }, { rootMargin: '400px' });
+    }, { rootMargin: '600px' });
     observer.observe(sentinel);
   }
 
